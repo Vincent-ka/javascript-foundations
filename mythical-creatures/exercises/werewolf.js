@@ -26,20 +26,25 @@ class Werewolf {
   transform() {
       if (this._human === true) {
         this._human = false
+        this._hungry = true
       } else {
           this._human = true
+          this._hungry = false
       }
       if (this._wolf === false) {
         this._wolf = true
+        this._hungry = true
       } else {
           this._wolf = false
+          this._hungry = false
       }
-      this._hungry = true
+      
   }
 
   eat(victim) {
-      if (this._hungry === true) {
+      if (this._hungry === true || this._human === true) {
           this._victim.push(victim)
+          this.transform()
       }
   }
 }
